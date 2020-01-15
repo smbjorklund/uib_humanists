@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: uib_users
+label: 'UiB Users'
+description: 'UiB humanists user migration from Drupal 7'
+source_type: 'Drupal 7'
+module: null
+shared_configuration:
+  source:
+    key: migrate

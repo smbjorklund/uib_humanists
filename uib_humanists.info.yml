@@ -1,0 +1,8 @@
+type: module
+name: Migrate Humanities
+description: 'UiB humanities migrations'
+package: UiB
+core: '8.x'
+
+dependencies:
+  - drupal:migrate (>=8.3)
