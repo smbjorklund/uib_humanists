@@ -1,6 +1,11 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - uib_humanists
+  enforced:
+    module:
+      - uib_humanists
 id: uib_nodes
 label: 'Upgrade nodes'
 description: 'UiB humanists node migration from Drupal 7'

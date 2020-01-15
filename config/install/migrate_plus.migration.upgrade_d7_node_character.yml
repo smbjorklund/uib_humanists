@@ -1,6 +1,11 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - uib_humanists
+  enforced:
+    module:
+      - uib_humanists
 id: upgrade_d7_node_character
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
