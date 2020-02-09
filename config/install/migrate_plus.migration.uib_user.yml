@@ -73,7 +73,7 @@ process:
   roles:
     -
       plugin: migration_lookup
-      migration: upgrade_upgrade_d7_user_role
+      migration: uib_user_role
       source: roles
   user_picture:
     -
@@ -87,11 +87,11 @@ destination:
   plugin: 'entity:user'
 migration_dependencies:
   required:
-    - upgrade_upgrade_d7_user_role
+    - uib_user_role
   optional:
     - upgrade_upgrade_d7_field_instance
     - upgrade_upgrade_d7_file
     - upgrade_upgrade_user_picture_field_instance
     - upgrade_upgrade_user_picture_entity_display
     - upgrade_upgrade_user_picture_entity_form_display
-    - upgrade_upgrade_d7_user_role
+    - uib_user_role
