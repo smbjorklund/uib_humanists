@@ -1,0 +1,120 @@
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_upgrade_upgrade_d7_taxonomy_term_publication_venue
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: uib_taxonomy
+label: 'Taxonomy terms (Creative Work Publication Type)'
+source:
+  key: migrate
+  plugin: d7_taxonomy_term
+  bundle: publication_venue
+process:
+  tid:
+    -
+      plugin: get
+      source: tid
+  name:
+    -
+      plugin: get
+      source: name
+  description/value:
+    -
+      plugin: get
+      source: description
+  description/format:
+    -
+      plugin: get
+      source: format
+  weight:
+    -
+      plugin: get
+      source: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration:
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_thing
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_visual_qualities
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_colours
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_verbs
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_publisher_and_journal_types
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_aware
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_functioning
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_happening
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_operation_of_machine_vision
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_owner_developer_type
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_customizable
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_marginalized
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_agency
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_age
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_species
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_race
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_sentiment
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_themes
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_the_agent_or_user_is
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_vocabulary_2
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_vocabulary_1
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_record_status
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_publication_venue
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_publication_type
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_language
+        - upgrade_upgrade_upgrade_d7_taxonomy_term_gender
+  parent:
+    -
+      plugin: default_value
+      default_value: 0
+      source: '@parent_id'
+  forum_container:
+    -
+      plugin: get
+      source: is_container
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  langcode:
+    -
+      plugin: get
+      source: language
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: publication_venue
+migration_dependencies:
+  optional:
+    - upgrade_upgrade_upgrade_d7_field_instance
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_gender
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_language
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_publication_type
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_publication_venue
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_record_status
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_vocabulary_1
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_vocabulary_2
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_the_agent_or_user_is
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_themes
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_sentiment
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_race
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_species
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_age
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_agency
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_marginalized
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_customizable
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_owner_developer_type
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_operation_of_machine_vision
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_happening
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_functioning
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_aware
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_publisher_and_journal_types
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_verbs
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_colours
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_visual_qualities
+    - upgrade_upgrade_upgrade_d7_taxonomy_term_thing
