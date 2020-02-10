@@ -1,7 +1,8 @@
+uuid: 1ddbd36b-210f-4094-98f5-c6a8d349bb1a
 langcode: en
 status: true
 dependencies: {  }
-id: upgrade_upgrade_upgrade_d7_taxonomy_term_publication_venue
+id: uib_taxonomy_term_creative_work_publication_type
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
