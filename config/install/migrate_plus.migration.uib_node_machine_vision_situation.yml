@@ -1,0 +1,201 @@
+langcode: en
+status: true
+dependencies: {  }
+id: uib_node_machine_vision_situation
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: uib_nodes
+label: 'Nodes (Machine Vision Situation)'
+source:
+  plugin: d7_node
+  node_type: machine_vision_situation
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  comment_node_machine_vision_situation/0/status:
+    -
+      plugin: get
+      source: comment
+  field_who_operates:
+    -
+      plugin: sub_process
+      source: field_who_operates
+      process:
+        target_id: tid
+  field_who_owns_developed:
+    -
+      plugin: sub_process
+      source: field_who_owns_developed
+      process:
+        target_id: tid
+  field_who_is_viewed_by:
+    -
+      plugin: sub_process
+      source: field_who_is_viewed_by
+      process:
+        target_id: tid
+  field_brief_description:
+    -
+      plugin: get
+      source: field_brief_description
+  field_character_operates:
+    -
+      plugin: get
+      source: field_character_operates
+  field_characters_viewed:
+    -
+      plugin: get
+      source: field_characters_viewed
+  field_sentiment:
+    -
+      plugin: sub_process
+      source: field_sentiment
+      process:
+        target_id: tid
+  field_technologies_referenced:
+    -
+      plugin: sub_process
+      source: field_technologies_referenced
+      process:
+        target_id: tid
+  field_viewed_attitude:
+    -
+      plugin: sub_process
+      source: field_viewed_attitude
+      process:
+        target_id: tid
+  field_operator_s_attitude_toward:
+    -
+      plugin: sub_process
+      source: field_operator_s_attitude_toward
+      process:
+        target_id: tid
+  field_relationships_humans_machi:
+    -
+      plugin: sub_process
+      source: field_relationships_humans_machi
+      process:
+        target_id: tid
+  field_happening:
+    -
+      plugin: sub_process
+      source: field_happening
+      process:
+        target_id: tid
+  field_functioning:
+    -
+      plugin: sub_process
+      source: field_functioning
+      process:
+        target_id: tid
+  field_pullquote:
+    -
+      plugin: get
+      source: field_pullquote
+  field_media_asset:
+    -
+      plugin: sub_process
+      source: field_media_asset
+      process:
+        target_id: fid
+        display: display
+        description: description
+  field_multi_images:
+    -
+      plugin: sub_process
+      source: field_multi_images
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_notes:
+    -
+      plugin: get
+      source: field_notes
+  field_aware_of_being_viewed:
+    -
+      plugin: sub_process
+      source: field_aware_of_being_viewed
+      process:
+        target_id: tid
+  field_colours:
+    -
+      plugin: sub_process
+      source: field_colours
+      process:
+        target_id: tid
+  field_visual_characteristics:
+    -
+      plugin: sub_process
+      source: field_visual_characteristics
+      process:
+        target_id: tid
+  field_actions:
+    -
+      plugin: get
+      source: field_actions
+destination:
+  plugin: 'entity:node'
+  default_bundle: machine_vision_situation
+migration_dependencies:
+  required:
+    - uib_users
+  optional:
+    - upgrade_d7_field_instance

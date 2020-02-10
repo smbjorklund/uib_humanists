@@ -295,6 +295,6 @@ destination:
   default_bundle: work
 migration_dependencies:
   required:
-    - uib_user
+    - uib_users
   optional:
     - upgrade_d7_field_instance
