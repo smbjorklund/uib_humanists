@@ -1,0 +1,15 @@
+uuid: c30383e4-0893-4852-9026-fa8176659c66
+langcode: en
+status: true
+dependencies:
+  module:
+    - uib_humanists
+  enforced:
+    module:
+      - uib_humanists
+id: uib_taxonomy
+label: 'UiB taxonomy'
+description: 'Taxonomy migrations'
+source_type: 'Drupal 7'
+module: null
+shared_configuration: null
