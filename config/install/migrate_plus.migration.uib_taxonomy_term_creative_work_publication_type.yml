@@ -89,7 +89,7 @@ process:
       source: language
 destination:
   plugin: 'entity:taxonomy_term'
-  default_bundle: publication_venue
+  default_bundle: creative_work_publication_type
 migration_dependencies:
   optional:
     - upgrade_upgrade_upgrade_d7_field_instance
