@@ -1,12 +1,13 @@
+uuid: 05885a3b-3afe-490a-ac9e-f6c56feacfac
 langcode: en
 status: true
 dependencies:
-  module:
-    - uib_humanists
   enforced:
     module:
       - uib_humanists
-id: upgrade_d7_node_character
+_core:
+  default_config_hash: PGV3yTBzO6vwB3VkA8-8wTBGX_YW47PjfpURUXanJlE
+id: uib_node_character
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
@@ -142,7 +143,6 @@ destination:
   default_bundle: character
 migration_dependencies:
   required:
-    - upgrade_d7_user
-    - upgrade_d7_node_type
+    - uib_user
   optional:
     - upgrade_d7_field_instance
