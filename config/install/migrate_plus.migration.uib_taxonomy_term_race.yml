@@ -20,11 +20,6 @@ process:
     -
       plugin: get
       source: tid
-  vid:
-    -
-      plugin: migration_lookup
-      migration: upgrade_upgrade_d7_taxonomy_vocabulary
-      source: vid
   name:
     -
       plugin: get
@@ -96,7 +91,6 @@ destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: race
 migration_dependencies:
-  required: null
   optional:
     - upgrade_upgrade_d7_field_instance
     - upgrade_upgrade_d7_taxonomy_term_gender
