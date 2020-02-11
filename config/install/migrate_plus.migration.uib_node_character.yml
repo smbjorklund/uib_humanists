@@ -133,7 +133,7 @@ process:
     -
       plugin: get
       source: field_group
-  field_customizable_:
+  field_customizable:
     -
       plugin: get
       source: field_customizable_
