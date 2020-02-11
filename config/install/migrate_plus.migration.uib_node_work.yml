@@ -72,78 +72,20 @@ process:
     -
       plugin: get
       source: comment
-  field_abstract_lang:
-    -
-      plugin: get
-      source: field_abstract_lang
-  field_abstract_lang_tax:
-    -
-      plugin: sub_process
-      source: field_abstract_lang_tax
-      process:
-        target_id: tid
-  field_archiveurl:
-    -
-      plugin: field_link
-      source: field_archiveurl
   field_author_name:
     -
       plugin: get
       source: field_author_name
-  field_contributor:
-    -
-      plugin: get
-      source: field_contributor
-  field_contributors:
-    -
-      plugin: get
-      source: field_contributors
-  field_doi:
-    -
-      plugin: get
-      source: field_doi
-  field_downloadurl:
-    -
-      plugin: field_link
-      source: field_downloadurl
-  field_editorial_notes:
-    -
-      plugin: get
-      source: field_editorial_notes
-  field_electronic_literature_dire:
-    -
-      plugin: field_link
-      source: field_electronic_literature_dire
-  field_files:
-    -
-      plugin: sub_process
-      source: field_files
-      process:
-        target_id: fid
-        display: display
-        description: description
   field_i_e_poetry_entry:
     -
       plugin: field_link
       source: field_i_e_poetry_entry
-  field_in_anthology:
-    -
-      plugin: get
-      source: field_in_anthology
-  field_isbn_text:
-    -
-      plugin: get
-      source: field_isbn_text
   field_language_tax:
     -
       plugin: sub_process
       source: field_language_tax
       process:
         target_id: tid
-  field_license:
-    -
-      plugin: get
-      source: field_license
   field_media_asset:
     -
       plugin: sub_process
@@ -162,30 +104,6 @@ process:
         title: title
         width: width
         height: height
-  field_node_ref:
-    -
-      plugin: get
-      source: field_node_ref
-  field_node_ref_event:
-    -
-      plugin: get
-      source: field_node_ref_event
-  field_nt2_entry:
-    -
-      plugin: field_link
-      source: field_nt2_entry
-  field_other_edition_work:
-    -
-      plugin: get
-      source: field_other_edition_work
-  field_other_lang_ver_link:
-    -
-      plugin: get
-      source: field_other_lang_ver_link
-  field_part_of_another_work:
-    -
-      plugin: get
-      source: field_part_of_another_work
   field_pullquote:
     -
       plugin: get
@@ -196,18 +114,10 @@ process:
       source: field_record_status_tax
       process:
         target_id: tid
-  field_tech_notes:
-    -
-      plugin: get
-      source: field_tech_notes
   field_textfield:
     -
       plugin: get
       source: field_textfield
-  field_translator:
-    -
-      plugin: get
-      source: field_translator
   field_url:
     -
       plugin: field_link
@@ -228,10 +138,6 @@ process:
           from_format: 'Y-m-d\TH:i:s'
           to_format: Y-m-d
           source: value
-  field_worldcat_link:
-    -
-      plugin: field_link
-      source: field_worldcat_link
   field_technologies_used:
     -
       plugin: sub_process
@@ -242,18 +148,6 @@ process:
     -
       plugin: field_link
       source: field_authoring_software_entry
-  field_po_ex_entry:
-    -
-      plugin: field_link
-      source: field_po_ex_entry
-  field_repository:
-    -
-      plugin: field_link
-      source: field_repository
-  field_work_platform_software:
-    -
-      plugin: get
-      source: field_work_platform_software
   field_technologies_referenced:
     -
       plugin: sub_process
@@ -264,12 +158,6 @@ process:
     -
       plugin: sub_process
       source: field_themes
-      process:
-        target_id: tid
-  field_agent_user:
-    -
-      plugin: sub_process
-      source: field_agent_user
       process:
         target_id: tid
   field_sentiment:
