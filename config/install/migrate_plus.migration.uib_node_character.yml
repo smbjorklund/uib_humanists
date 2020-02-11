@@ -17,7 +17,6 @@ migration_tags:
 migration_group: uib_nodes
 label: 'Nodes (Character)'
 source:
-  key: migrate
   plugin: d7_node
   node_type: character
 process:
@@ -78,14 +77,6 @@ process:
     -
       plugin: get
       source: comment
-  field_customizable:
-    -
-      plugin: get
-      source: field_customizable
-  field_marginalized:
-    -
-      plugin: get
-      source: field_marginalized
   field_race_ethnicity:
     -
       plugin: sub_process
@@ -138,6 +129,20 @@ process:
     -
       plugin: get
       source: field_description
+  field_group:
+    -
+      plugin: get
+      source: field_group
+  field_customizable_:
+    -
+      plugin: get
+      source: field_customizable_
+  field_sexuality:
+    -
+      plugin: sub_process
+      source: field_sexuality
+      process:
+        target_id: tid
 destination:
   plugin: 'entity:node'
   default_bundle: character
@@ -146,3 +151,4 @@ migration_dependencies:
     - uib_user
   optional:
     - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance
