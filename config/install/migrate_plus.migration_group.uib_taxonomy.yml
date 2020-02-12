@@ -9,7 +9,7 @@ dependencies:
       - uib_humanists
 id: uib_taxonomy
 label: 'UiB taxonomy'
-description: 'Taxonomy migrations'
+description: 'UiB humanists taxonomy migration'
 source_type: 'Drupal 7'
 module: null
 shared_configuration: null
