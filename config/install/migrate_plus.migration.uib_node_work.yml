@@ -160,6 +160,10 @@ process:
       source: field_themes
       process:
         target_id: tid
+  field_science_fiction:
+    -
+      plugin: get
+      source: field_science_fiction_
   field_sentiment:
     -
       plugin: sub_process
