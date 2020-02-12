@@ -73,7 +73,7 @@ process:
     -
       plugin: get
       source: comment
-  field_alternative_spelling_of_na:
+  field_alias_or_pseudonym:
     -
       plugin: get
       source: field_alternative_spelling_of_na
@@ -103,7 +103,7 @@ process:
     -
       plugin: get
       source: field_nationality
-  field_record_status_tax:
+  field_record_status:
     -
       plugin: sub_process
       source: field_record_status_tax
@@ -113,7 +113,7 @@ process:
     -
       plugin: field_link
       source: field_url
-  field_person_notes:
+  field_notes:
     -
       plugin: get
       source: field_person_notes
