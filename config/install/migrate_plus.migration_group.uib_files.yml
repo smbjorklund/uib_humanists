@@ -7,9 +7,8 @@ dependencies:
   enforced:
     module:
       - uib_humanists
-
 id: uib_files
-label: 'UiB files'
+label: 'UiB humanists file migration from Drupal 7'
 description: 'Migrate files, images, documents, videos'
 source_type: 'Drupal 7'
 module: null
