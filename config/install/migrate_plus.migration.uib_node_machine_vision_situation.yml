@@ -11,6 +11,7 @@ migration_tags:
 migration_group: uib_nodes
 label: 'Nodes (Machine Vision Situation)'
 source:
+  key: migrate
   plugin: d7_node
   node_type: machine_vision_situation
 process:
@@ -89,7 +90,7 @@ process:
       source: field_who_is_viewed_by
       process:
         target_id: tid
-  field_brief_description:
+  field_textfield:
     -
       plugin: get
       source: field_brief_description
@@ -179,6 +180,12 @@ process:
     -
       plugin: sub_process
       source: field_colours
+      process:
+        target_id: tid
+  field_record_status:
+    -
+      plugin: sub_process
+      source: field_record_status_tax
       process:
         target_id: tid
   field_visual_characteristics:
