@@ -101,7 +101,7 @@ process:
       source: field_age
       process:
         target_id: tid
-  field_your_notes:
+  field_optional_notes:
     -
       plugin: get
       source: field_your_notes
@@ -129,7 +129,7 @@ process:
     -
       plugin: get
       source: field_description
-  field_group:
+  field_individual_or_group:
     -
       plugin: get
       source: field_group
