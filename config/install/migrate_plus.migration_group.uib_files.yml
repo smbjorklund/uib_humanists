@@ -1,0 +1,16 @@
+uuid: 50999833-bd2a-43a6-8227-a20bc6fa0181
+langcode: en
+status: true
+dependencies:
+  module:
+    - uib_humanists
+  enforced:
+    module:
+      - uib_humanists
+
+id: uib_files
+label: 'UiB files'
+description: 'Migrate files, images, documents, videos'
+source_type: 'Drupal 7'
+module: null
+shared_configuration: null
