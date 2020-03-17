@@ -1,0 +1,151 @@
+uuid: e601db13-ac41-424e-af22-c9c6cd6c1dcf
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_taxonomy_term_sexuality
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Taxonomy terms (Sexuality)'
+source:
+  plugin: d7_taxonomy_term
+  bundle: sexuality
+process:
+  tid:
+    -
+      plugin: get
+      source: tid
+  vid:
+    -
+      plugin: migration_lookup
+      migration: upgrade_d7_taxonomy_vocabulary
+      source: vid
+  name:
+    -
+      plugin: get
+      source: name
+  description/value:
+    -
+      plugin: get
+      source: description
+  description/format:
+    -
+      plugin: get
+      source: format
+  weight:
+    -
+      plugin: get
+      source: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration:
+        - upgrade_d7_taxonomy_term_sexuality
+        - upgrade_d7_taxonomy_term_individual_or_group
+        - upgrade_d7_taxonomy_term_generic_entities
+        - upgrade_d7_taxonomy_term_visual_qualities
+        - upgrade_d7_taxonomy_term_colours
+        - upgrade_d7_taxonomy_term_verbs
+        - upgrade_d7_taxonomy_term_publisher_and_journal_types
+        - upgrade_d7_taxonomy_term_aware
+        - upgrade_d7_taxonomy_term_functioning
+        - upgrade_d7_taxonomy_term_happening
+        - upgrade_d7_taxonomy_term_operation_of_machine_vision
+        - upgrade_d7_taxonomy_term_owner_developer_type
+        - upgrade_d7_taxonomy_term_age
+        - upgrade_d7_taxonomy_term_species
+        - upgrade_d7_taxonomy_term_race
+        - upgrade_d7_taxonomy_term_sentiment
+        - upgrade_d7_taxonomy_term_themes
+        - upgrade_d7_taxonomy_term_the_agent_or_user_is
+        - upgrade_d7_taxonomy_term_vocabulary_2
+        - upgrade_d7_taxonomy_term_vocabulary_1
+        - upgrade_d7_taxonomy_term_record_status
+        - upgrade_d7_taxonomy_term_publication_venue
+        - upgrade_d7_taxonomy_term_publication_type
+        - upgrade_d7_taxonomy_term_language
+        - upgrade_d7_taxonomy_term_gender
+  parent:
+    -
+      plugin: default_value
+      default_value: 0
+      source: '@parent_id'
+  forum_container:
+    -
+      plugin: get
+      source: is_container
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  langcode:
+    -
+      plugin: get
+      source: language
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: sexuality
+migration_dependencies:
+  required:
+    - upgrade_d7_taxonomy_vocabulary
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_taxonomy_vocabulary
+    - upgrade_d7_taxonomy_term_gender
+    - upgrade_d7_taxonomy_term_language
+    - upgrade_d7_taxonomy_term_publication_type
+    - upgrade_d7_taxonomy_term_publication_venue
+    - upgrade_d7_taxonomy_term_record_status
+    - upgrade_d7_taxonomy_term_vocabulary_1
+    - upgrade_d7_taxonomy_term_vocabulary_2
+    - upgrade_d7_taxonomy_term_the_agent_or_user_is
+    - upgrade_d7_taxonomy_term_themes
+    - upgrade_d7_taxonomy_term_sentiment
+    - upgrade_d7_taxonomy_term_race
+    - upgrade_d7_taxonomy_term_species
+    - upgrade_d7_taxonomy_term_age
+    - upgrade_d7_taxonomy_term_owner_developer_type
+    - upgrade_d7_taxonomy_term_operation_of_machine_vision
+    - upgrade_d7_taxonomy_term_happening
+    - upgrade_d7_taxonomy_term_functioning
+    - upgrade_d7_taxonomy_term_aware
+    - upgrade_d7_taxonomy_term_publisher_and_journal_types
+    - upgrade_d7_taxonomy_term_verbs
+    - upgrade_d7_taxonomy_term_colours
+    - upgrade_d7_taxonomy_term_visual_qualities
+    - upgrade_d7_taxonomy_term_generic_entities
+    - upgrade_d7_taxonomy_term_individual_or_group
+    - upgrade_d7_taxonomy_term_sexuality
+    - upgrade_d7_taxonomy_term_sexuality
+    - upgrade_d7_taxonomy_term_individual_or_group
+    - upgrade_d7_taxonomy_term_generic_entities
+    - upgrade_d7_taxonomy_term_visual_qualities
+    - upgrade_d7_taxonomy_term_colours
+    - upgrade_d7_taxonomy_term_verbs
+    - upgrade_d7_taxonomy_term_publisher_and_journal_types
+    - upgrade_d7_taxonomy_term_aware
+    - upgrade_d7_taxonomy_term_functioning
+    - upgrade_d7_taxonomy_term_happening
+    - upgrade_d7_taxonomy_term_operation_of_machine_vision
+    - upgrade_d7_taxonomy_term_owner_developer_type
+    - upgrade_d7_taxonomy_term_age
+    - upgrade_d7_taxonomy_term_species
+    - upgrade_d7_taxonomy_term_race
+    - upgrade_d7_taxonomy_term_sentiment
+    - upgrade_d7_taxonomy_term_themes
+    - upgrade_d7_taxonomy_term_the_agent_or_user_is
+    - upgrade_d7_taxonomy_term_vocabulary_2
+    - upgrade_d7_taxonomy_term_vocabulary_1
+    - upgrade_d7_taxonomy_term_record_status
+    - upgrade_d7_taxonomy_term_publication_venue
+    - upgrade_d7_taxonomy_term_publication_type
+    - upgrade_d7_taxonomy_term_language
+    - upgrade_d7_taxonomy_term_gender
