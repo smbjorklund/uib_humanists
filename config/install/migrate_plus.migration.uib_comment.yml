@@ -1,0 +1,60 @@
+id: uib_comment
+dependencies:
+  module:
+    - uib_humanists
+  enforced:
+    module:
+      - uib_humanists
+label: Comments
+audit: true
+migration_group: uib_nodes
+migration_tags:
+  - Drupal 7
+  - Content
+class: Drupal\comment\Plugin\migrate\D7Comment
+source:
+  plugin: d7_comment
+  constants:
+    entity_type: node
+process:
+  # If you are using this file to build a custom migration consider removing
+  # the cid field to allow incremental migrations.
+  cid: cid
+  pid:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: pid
+    -
+      plugin: migration_lookup
+      migration: d7_comment
+  entity_id:
+    -
+      plugin: migration_lookup
+      migration:
+        - uib_node
+      source: nid
+    -
+      plugin: skip_on_empty
+      method: row
+  entity_type: 'constants/entity_type'
+  langcode: language
+  field_name: '@comment_type'
+  subject: subject
+  uid: uid
+  name: name
+  mail: mail
+  homepage: homepage
+  hostname: hostname
+  created: created
+  changed: changed
+  status: status
+  thread: thread
+  comment_body: comment_body
+destination:
+  plugin: entity:comment
+migration_dependencies:
+  required:
+    - uib_node
+  optional:
+    - d7_node_translation
