@@ -1,15 +1,14 @@
-uuid: e601db13-ac41-424e-af22-c9c6cd6c1dcf
 langcode: en
 status: true
 dependencies: {  }
-id: upgrade_d7_taxonomy_term_sexuality
+id: uib_taxonomy_term_sexuality
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - 'Drupal 7'
   - Content
-migration_group: migrate_drupal_7
+migration_group: uib_taxonomy
 label: 'Taxonomy terms (Sexuality)'
 source:
   plugin: d7_taxonomy_term
@@ -19,11 +18,6 @@ process:
     -
       plugin: get
       source: tid
-  vid:
-    -
-      plugin: migration_lookup
-      migration: upgrade_d7_taxonomy_vocabulary
-      source: vid
   name:
     -
       plugin: get
@@ -94,8 +88,6 @@ destination:
   plugin: 'entity:taxonomy_term'
   default_bundle: sexuality
 migration_dependencies:
-  required:
-    - upgrade_d7_taxonomy_vocabulary
   optional:
     - upgrade_d7_field_instance
     - upgrade_d7_taxonomy_vocabulary
