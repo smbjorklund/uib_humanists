@@ -1,0 +1,138 @@
+langcode: en
+status: true
+dependencies: {  }
+id: uib_revision_node_machine_vision_situation
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: uib_nodes
+label: 'Node revisions (Machine Vision Situation)'
+source:
+  key: migrate
+  plugin: d7_node_revision
+  node_type: machine_vision_situation
+process:
+  nid:
+    -
+      plugin: get
+      source: nid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  comment_node_machine_vision_situation/0/status:
+    -
+      plugin: get
+      source: comment
+  field_textfield:
+    -
+      plugin: get
+      source: field_brief_description
+  field_pullquote:
+    -
+      plugin: get
+      source: field_pullquote
+  field_media_asset:
+    -
+      plugin: sub_process
+      source: field_media_asset
+      process:
+        target_id: fid
+        display: display
+        description: description
+  field_multi_images:
+    -
+      plugin: sub_process
+      source: field_multi_images
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_notes:
+    -
+      plugin: get
+      source: field_notes
+  field_colours:
+    -
+      plugin: sub_process
+      source: field_colours
+      process:
+        target_id: tid
+  field_record_status:
+    -
+      plugin: sub_process
+      source: field_record_status_tax
+      process:
+        target_id: tid
+  field_visual_characteristics:
+    -
+      plugin: sub_process
+      source: field_visual_characteristics
+      process:
+        target_id: tid
+  field_actions:
+    -
+      plugin: get
+      source: field_actions
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: machine_vision_situation
+migration_dependencies:
+  required:
+    - uib_node_character
+    - uib_node_machine_vision_situation
+    - uib_node_person
+    - uib_node_work
+    - uib_users
+  optional:
+    - upgrade_d7_field_instance
