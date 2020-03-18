@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: uib_revision_node_machine_vision_situation
+id: uib_node_revision_machine_vision_situation
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
