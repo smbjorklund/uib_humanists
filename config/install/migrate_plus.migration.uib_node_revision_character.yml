@@ -1,0 +1,157 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - uib_humanists
+_core:
+  default_config_hash: PGV3yTBzO6vwB3VkA8-8wTBGX_YW47PjfpURUXanJlE
+id: uib_node_revision_character
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: uib_nodes
+label: 'Node revisions (Character)'
+source:
+  plugin: d7_node_revision
+  node_type: character
+process:
+  nid:
+    -
+      plugin: get
+      source: nid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  comment_node_character/0/status:
+    -
+      plugin: get
+      source: comment
+  field_race_ethnicity:
+    -
+      plugin: sub_process
+      source: field_race_ethnicity
+      process:
+        target_id: tid
+  field_gender:
+    -
+      plugin: sub_process
+      source: field_gender
+      process:
+        target_id: tid
+  field_species:
+    -
+      plugin: sub_process
+      source: field_species
+      process:
+        target_id: tid
+  field_age:
+    -
+      plugin: sub_process
+      source: field_age
+      process:
+        target_id: tid
+  field_optional_notes:
+    -
+      plugin: get
+      source: field_your_notes
+  field_media:
+    -
+      plugin: sub_process
+      source: field_media
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_image:
+    -
+      plugin: sub_process
+      source: field_image
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_description:
+    -
+      plugin: get
+      source: field_description
+  field_individual_or_group:
+    -
+      plugin: get
+      source: field_group
+  field_customizable:
+    -
+      plugin: get
+      source: field_customizable_
+  field_sexuality:
+    -
+      plugin: sub_process
+      source: field_sexuality
+      process:
+        target_id: tid
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: character
+migration_dependencies:
+  required:
+    - uib_node_character
+    - uib_node_machine_vision_situation
+    - uib_node_person
+    - uib_node_work
+    - uib_user
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance
