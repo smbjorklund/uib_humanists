@@ -1,0 +1,138 @@
+uuid: 37b0e8db-70c9-4eba-acc2-a6bc8b4c62d6
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_revision_person
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (Person)'
+source:
+  plugin: d7_node_revision
+  node_type: person
+process:
+  nid:
+    -
+      plugin: get
+      source: nid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  comment_node_person/0/status:
+    -
+      plugin: get
+      source: comment
+  field_alternative_spelling_of_na:
+    -
+      plugin: get
+      source: field_alternative_spelling_of_na
+  field_editorial_notes:
+    -
+      plugin: get
+      source: field_editorial_notes
+  field_first_name:
+    -
+      plugin: get
+      source: field_first_name
+  field_last_name:
+    -
+      plugin: get
+      source: field_last_name
+  field_middle_name:
+    -
+      plugin: get
+      source: field_middle_name
+  field_nationality:
+    -
+      plugin: get
+      source: field_nationality
+  field_record_status_tax:
+    -
+      plugin: sub_process
+      source: field_record_status_tax
+      process:
+        target_id: tid
+  field_url:
+    -
+      plugin: field_link
+      source: field_url
+  field_person_notes:
+    -
+      plugin: get
+      source: field_person_notes
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: person
+migration_dependencies:
+  required:
+    - upgrade_d7_node_book
+    - upgrade_d7_node_character
+    - upgrade_d7_node_class_group
+    - upgrade_d7_node_critical_writing
+    - upgrade_d7_node_databases_and_archives
+    - upgrade_d7_node_event
+    - upgrade_d7_node_landing_page
+    - upgrade_d7_node_machine_vision_situation
+    - upgrade_d7_node_notebook
+    - upgrade_d7_node_notebook_entry
+    - upgrade_d7_node_organization
+    - upgrade_d7_node_page
+    - upgrade_d7_node_panel
+    - upgrade_d7_node_person
+    - upgrade_d7_node_platform_software
+    - upgrade_d7_node_publisher
+    - upgrade_d7_node_research_collection
+    - upgrade_d7_node_story
+    - upgrade_d7_node_teaching_resource
+    - upgrade_d7_node_work
+  optional: {  }
