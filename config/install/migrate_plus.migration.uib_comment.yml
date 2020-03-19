@@ -1,25 +1,24 @@
+langcode: en
+status: true
+dependencies: {  }
 id: uib_comment
-dependencies:
-  module:
-    - uib_humanists
-  enforced:
-    module:
-      - uib_humanists
-label: Comments
-audit: true
-migration_group: uib_nodes
-migration_tags:
-  - Drupal 7
-  - Content
 class: Drupal\comment\Plugin\migrate\D7Comment
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: uib_nodes
+label: Comments
 source:
   plugin: d7_comment
   constants:
     entity_type: node
 process:
-  # If you are using this file to build a custom migration consider removing
-  # the cid field to allow incremental migrations.
-  cid: cid
+  cid:
+    -
+      plugin: get
+      source: cid
   pid:
     -
       plugin: skip_on_empty
@@ -27,35 +26,132 @@ process:
       source: pid
     -
       plugin: migration_lookup
-      migration: d7_comment
+      migration: upgrade_d7_comment
   entity_id:
     -
       plugin: migration_lookup
       migration:
-        - uib_node
+        - uib_node_character
+        - uib_node_machine_vision_situation
+        - uib_node_person
+        - uib_node_work
       source: nid
     -
       plugin: skip_on_empty
       method: row
-  entity_type: 'constants/entity_type'
-  langcode: language
-  field_name: '@comment_type'
-  subject: subject
-  uid: uid
-  name: name
-  mail: mail
-  homepage: homepage
-  hostname: hostname
-  created: created
-  changed: changed
-  status: status
-  thread: thread
-  comment_body: comment_body
+  entity_type:
+    -
+      plugin: get
+      source: constants/entity_type
+  comment_type:
+    -
+      plugin: migration_lookup
+      source: node_type
+      migration: upgrade_d7_comment_type
+    -
+      plugin: skip_on_empty
+      method: row
+  langcode:
+    -
+      plugin: get
+      source: language
+  field_name:
+    -
+      plugin: get
+      source: '@comment_type'
+  subject:
+    -
+      plugin: get
+      source: subject
+  uid:
+    -
+      plugin: get
+      source: uid
+  name:
+    -
+      plugin: get
+      source: name
+  mail:
+    -
+      plugin: get
+      source: mail
+  homepage:
+    -
+      plugin: get
+      source: homepage
+  hostname:
+    -
+      plugin: get
+      source: hostname
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  status:
+    -
+      plugin: get
+      source: status
+  thread:
+    -
+      plugin: get
+      source: thread
+  comment_body:
+    -
+      plugin: get
+      source: comment_body
 destination:
-  plugin: entity:comment
+  plugin: 'entity:comment'
 migration_dependencies:
   required:
-    - uib_node
-    - uib_users
+    - uib_node_character
+    - uib_node_machine_vision_situation
+    - uib_node_person
+    - uib_node_work
+    - uib_user
   optional:
-    - d7_node_translation
+    - upgrade_d7_comment
+    - upgrade_d7_node_book
+    - upgrade_d7_node_character
+    - upgrade_d7_node_class_group
+    - upgrade_d7_node_critical_writing
+    - upgrade_d7_node_databases_and_archives
+    - upgrade_d7_node_event
+    - upgrade_d7_node_landing_page
+    - upgrade_d7_node_machine_vision_situation
+    - upgrade_d7_node_notebook
+    - upgrade_d7_node_notebook_entry
+    - upgrade_d7_node_organization
+    - upgrade_d7_node_page
+    - upgrade_d7_node_panel
+    - upgrade_d7_node_person
+    - upgrade_d7_node_platform_software
+    - upgrade_d7_node_publisher
+    - upgrade_d7_node_research_collection
+    - upgrade_d7_node_story
+    - upgrade_d7_node_teaching_resource
+    - upgrade_d7_node_work
+    - upgrade_d7_comment_type
+    - upgrade_d7_node_book
+    - upgrade_d7_node_character
+    - upgrade_d7_node_class_group
+    - upgrade_d7_node_critical_writing
+    - upgrade_d7_node_databases_and_archives
+    - upgrade_d7_node_event
+    - upgrade_d7_node_landing_page
+    - upgrade_d7_node_machine_vision_situation
+    - upgrade_d7_node_notebook
+    - upgrade_d7_node_notebook_entry
+    - upgrade_d7_node_organization
+    - upgrade_d7_node_page
+    - upgrade_d7_node_panel
+    - upgrade_d7_node_person
+    - upgrade_d7_node_platform_software
+    - upgrade_d7_node_publisher
+    - upgrade_d7_node_research_collection
+    - upgrade_d7_node_story
+    - upgrade_d7_node_teaching_resource
+    - upgrade_d7_node_work
