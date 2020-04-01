@@ -26,7 +26,7 @@ process:
       source: pid
     -
       plugin: migration_lookup
-      migration: upgrade_d7_comment
+      migration: uib_comment
   entity_id:
     -
       plugin: migration_lookup
@@ -45,9 +45,14 @@ process:
       source: constants/entity_type
   comment_type:
     -
-      plugin: migration_lookup
+      plugin: static_map
       source: node_type
-      migration: upgrade_d7_comment_type
+      map:
+        comment_node_character: comments
+        comment_node_work: comments
+        comment_node_person: comments
+        comment_node_machine_vision_situation: comments
+      default_value: comments
     -
       plugin: skip_on_empty
       method: row
