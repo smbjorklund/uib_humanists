@@ -48,11 +48,10 @@ process:
       plugin: static_map
       source: node_type
       map:
-        comment_node_character: comments
-        comment_node_work: comments
-        comment_node_person: comments
-        comment_node_machine_vision_situation: comments
-      default_value: comments
+        character: comments
+        work: comments
+        person: comments
+        machine_vision_situation: comments
     -
       plugin: skip_on_empty
       method: row
@@ -62,8 +61,11 @@ process:
       source: language
   field_name:
     -
-      plugin: get
-      source: '@comment_type'
+      plugin: static_map
+      source: field_name
+      map:
+        field_name: field_comment
+      default_value: field_comment
   subject:
     -
       plugin: get
