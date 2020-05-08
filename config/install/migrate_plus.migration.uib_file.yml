@@ -14,7 +14,7 @@ source:
   plugin: d7_file
   scheme: public
   constants:
-    source_base_path: /
+    source_base_path: /Users/steinmb/sites/machinevision/machinevision/drupal
 process:
   fid:
     -
