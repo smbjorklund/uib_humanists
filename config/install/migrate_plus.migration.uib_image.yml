@@ -91,10 +91,31 @@ process:
         - image_field_alt
         - '@alt_from_media'
       default_value: null
-  field_file_image_title_text:
+  title_from_media:
     -
-      plugin: get
+      plugin: extract
       source: field_file_image_title_text
+      index:
+        - '0'
+        - value
+      default: ''
+    -
+      plugin: default_value
+      default_value: null
+  thumbnail/title:
+    -
+      plugin: null_coalesce
+      source:
+        - image_field_title
+        - '@title_from_media'
+      default_value: null
+  field_media_image/title:
+    -
+      plugin: null_coalesce
+      source:
+        - image_field_title
+        - '@title_from_media'
+      default_value: null
 destination:
   plugin: 'entity:media'
   bundle: image
