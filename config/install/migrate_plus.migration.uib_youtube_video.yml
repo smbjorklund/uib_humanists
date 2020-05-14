@@ -50,5 +50,5 @@ destination:
   default_bundle: remote_video
 migration_dependencies:
   optional: { }
-  required:
-    - uib_file
+  required: { }
+
