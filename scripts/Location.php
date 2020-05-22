@@ -76,10 +76,8 @@ final class Location
   {
     foreach ($this->result->items() as $entity) {
       $country = strtoupper($entity->country);
-//      print 'Before: ' . $entity->node->field_country->count() . PHP_EOL;
       print 'Updating ' . $entity->node->label() . ' ' . $entity->node->id() . ' Country: ' . $country . PHP_EOL;
-//      $entity->node->field_country->appendItem(strtoupper($entity->country));
-//      print 'After: ' . $entity->node->field_country->count() . ' ';
+      $entity->node->field_country->appendItem($country);
       $entity->node->save();
     }
   }
