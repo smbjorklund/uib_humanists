@@ -2,63 +2,95 @@
 
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Database\Database;
-use Drupal\Core\Database\StatementInterface;
+use Drupal\Core\Database\Query\SelectInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\node\Entity\Node;
+
+final class Result
+{
+  private $entities = [];
+
+  public function add($item): void
+  {
+    $this->entities[] = $item;
+  }
+
+  public function items(): array
+  {
+    return $this->entities;
+  }
+}
 
 final class Location
 {
-
+  private $result;
+  private $storage;
   private $database;
 
-  public function __construct(Connection $database, EntityStorageInterface $storage)
+  public function __construct(Result $result, Connection $database, EntityStorageInterface $storage)
   {
+    $this->result = $result;
     $this->database = $database;
     $this->storage = $storage;
   }
 
-  public function findEntities(): StatementInterface
+  private function query(): SelectInterface
   {
     $query = $this->database->select('location_instance', 'li')
       ->fields('li', ['nid', 'lid'])
       ->fields('l', ['country'])
       ->fields('lc', ['name']);
+    $query->distinct();
     $query->leftJoin('location', 'l', 'li.lid = l.lid');
     $query->leftJoin('location_country', 'lc', 'l.country = lc.code');
 
-    return $query->execute();
+    return $query;
   }
 
-  private function load($entity): EntityInterface
+  public function findEntities(): void
   {
+    $query = $this->query();
+    $entities = $query->execute();
 
+    foreach ($entities as $entity) {
+      $entity->node = $this->loadFullNode($entity);
+      $entity->node->field_country->setValue(NULL);
+      $this->result->add($entity);
+    }
+  }
+
+  private function loadFullNode($entity): EntityInterface
+  {
     try {
       $node = $this->storage->load($entity->nid);
     } catch (Exception $e) {
+      throw new \RuntimeException('Unable to load node ' . $entity->nid);
     }
 
-    if ($node !== NULL) {
-
-      if ($node->bundle() === 'person') {
-        return $node;
-      }
+    if (($node !== NULL) && $node->bundle() === 'person') {
+      return $node;
     }
   }
 
-  public function updateEntities($entities)
+  public function updateEntities(): void
   {
-    foreach ($entities as $entity) {
-      $node = $this->load($entity);
-        print 'Updating ' . $node->label() . ' ' . $node->id() . PHP_EOL;
-        $node->field_country->value('us');
-      }
+    foreach ($this->result->items() as $entity) {
+      $country = strtoupper($entity->country);
+//      print 'Before: ' . $entity->node->field_country->count() . PHP_EOL;
+      print 'Updating ' . $entity->node->label() . ' ' . $entity->node->id() . ' Country: ' . $country . PHP_EOL;
+//      $entity->node->field_country->appendItem(strtoupper($entity->country));
+//      print 'After: ' . $entity->node->field_country->count() . ' ';
+      $entity->node->save();
     }
   }
 
-$entityTypeToUpdate = new Location(
+}
+
+
+$bundle = new Location(
+  new Result(),
   Database::getConnection('default', 'migrate'),
   \Drupal::entityTypeManager()->getStorage('node')
 );
-$results = $entityTypeToUpdate->findEntities();
-$entityTypeToUpdate->updateEntities($results);
+$bundle->findEntities();
+$bundle->updateEntities();
