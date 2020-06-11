@@ -121,9 +121,20 @@ process:
       process:
         target_id: tid
   field_actions:
-    -
-      plugin: get
-      source: field_actions
+    plugin: sub_process
+    source: field_actions
+    process:
+      target_id:
+        - plugin: migration_lookup
+          migration:
+            - uib_paragraphs_character_actions
+            - uib_paragraphs_generic_entity_action
+            - uib_paragraphs_technology_actions
+          source: value
+        - plugin: extract
+          index:
+            - 0
+      target_revision_id: '@target_id'
 destination:
   plugin: 'entity:node'
   default_bundle: machine_vision_situation
