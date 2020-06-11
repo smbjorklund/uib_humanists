@@ -148,9 +148,6 @@ destination:
 migration_dependencies:
   required:
     - uib_node_character
-    - uib_node_machine_vision_situation
-    - uib_node_person
-    - uib_node_work
     - uib_user
   optional:
     - upgrade_d7_field_instance
