@@ -88,7 +88,7 @@ process:
         target_id: fid
         display: display
         description: description
-  field_multi_images:
+  field_multi_image:
     -
       plugin: sub_process
       source: field_multi_images
