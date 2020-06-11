@@ -8,7 +8,7 @@ cck_plugin_method: null
 migration_tags:
   - 'Drupal 7'
   - Content
-migration_group: uib_nodes
+migration_group: uib_comments
 label: Comments
 source:
   plugin: d7_comment
