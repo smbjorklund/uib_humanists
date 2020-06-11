@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies: {  }
+id: uib_paragraphs_character_actions
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: uib_paragraphs
+label: 'UiB Paragraphs Character Actions'
+source:
+  key: migrate
+  plugin: d7_paragraphs_item
+  bundle: character_actions
+process:
+  field_character:
+    - plugin: get
+      source: field_character
+  field_verbs:
+    - plugin: sub_process
+      source: field_verbs
+      process:
+        target_id: tid
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: character_actions
