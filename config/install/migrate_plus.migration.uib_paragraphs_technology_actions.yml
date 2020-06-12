@@ -15,11 +15,15 @@ source:
   bundle: technology_actions
 process:
   field_verbs:
-    - plugin: get
+    - plugin: sub_process
       source: field_verbs
+      process:
+        target_id: tid
   field_technology:
-    - plugin: get
+    - plugin: sub_process
       source: field_technology
+      process:
+        target_id: tid
 destination:
   plugin: 'entity_reference_revisions:paragraph'
   default_bundle: technology_actions
