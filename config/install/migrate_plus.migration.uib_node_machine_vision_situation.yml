@@ -140,7 +140,27 @@ destination:
   default_bundle: machine_vision_situation
 migration_dependencies:
   required:
-    - uib_users
+    - uib_user
+    - uib_user_role
     - uib_node_character
+    - uib_node_revision_character
+    - uib_taxonomy_term_creative_work_publication_type
+    - uib_taxonomy_term_gender
+    - uib_taxonomy_term_race
+    - uib_taxonomy_term_record_status
+    - uib_taxonomy_term_species
+    - uib_taxonomy_term_age
+    - uib_taxonomy_term_colours
+    - uib_taxonomy_term_generic_entities
+    - uib_taxonomy_term_individual_or_group
+    - uib_taxonomy_term_sentiment
+    - uib_taxonomy_term_sexuality
+    - uib_taxonomy_term_technologies
+    - uib_taxonomy_term_themes
+    - uib_taxonomy_term_verbs
+    - uib_taxonomy_term_visual_characteristics
+    - uib_paragraphs_character_actions
+    - uib_paragraphs_generic_entity_action
+    - uib_paragraphs_technology_actions
   optional:
     - upgrade_d7_field_instance
