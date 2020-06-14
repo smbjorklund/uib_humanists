@@ -121,20 +121,28 @@ process:
       process:
         target_id: tid
   field_actions:
-    plugin: sub_process
-    source: field_actions
-    process:
-      target_id:
-        - plugin: migration_lookup
+    -
+      plugin: sub_process
+      source: field_actions
+      process:
+        temporary_ids:
+          plugin: migration_lookup
+          no_stub: true
           migration:
             - uib_paragraphs_character_actions
             - uib_paragraphs_generic_entity_action
             - uib_paragraphs_technology_actions
           source: value
-        - plugin: extract
+        target_id:
+          plugin: extract
+          source: '@temporary_ids'
           index:
             - 0
-      target_revision_id: '@target_id'
+        target_revision_id:
+          plugin: extract
+          source: '@temporary_ids'
+          index:
+            - 1
 destination:
   plugin: 'entity:node'
   default_bundle: machine_vision_situation
