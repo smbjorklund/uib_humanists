@@ -109,6 +109,12 @@ process:
       source: field_record_status_tax
       process:
         target_id: tid
+  field_sexuality:
+    -
+      plugin: sub_process
+      source: field_sexuality
+      process:
+        target_id: tid
   field_url:
     -
       plugin: field_link
