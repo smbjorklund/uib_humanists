@@ -1,0 +1,10 @@
+{
+    "name": "smbjorklund/uib_humanists",
+    "type": "drupal-module",
+    "description": "Machine vision custom migration from Drupal 7 to 9.",
+    "homepage": "https://github.org/smbjorklund/uib_humanists",
+    "license": "GPL-2.0+",
+    "require": {
+        "drupal/core": "^8.7.7 || ^9"
+    }
+}
