@@ -15,8 +15,16 @@ source:
 process:
   vid:
     -
-      plugin: make_unique_entity_field
+      plugin: static_map
       source: machine_name
+      map:
+        vocabulary_1: tags
+        vocabulary_2: event_type
+        vocabulary_4: teaching_resource_type
+        publication_type: critical_writing_type
+      bypass: true
+    -
+      plugin: make_unique_entity_field
       entity_type: taxonomy_vocabulary
       field: vid
       length: 30
@@ -29,12 +37,6 @@ process:
       plugin: get
       source: name
   name:
-    -
-      plugin: static_map
-      source: name
-      map:
-        vocabulary_1: tags
-      bypass: true
     -
       plugin: get
       source: name
