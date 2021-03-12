@@ -1,19 +1,28 @@
 <?php
 
+use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
+use Drupal\Core\Entity\EntityStorageException;
+use Drupal\Core\Entity\EntityStorageInterface;
+
 final class CleanUp
 {
-  private $entityType;
-  private $storage;
+  private string $entityType;
+  private EntityStorageInterface $storage;
 
   public function __construct(string $entityType)
   {
     $this->entityType = $entityType;
-    $this->storage = \Drupal::entityTypeManager()->getStorage($this->entityType);
+    try {
+      $this->storage = Drupal::entityTypeManager()
+        ->getStorage($this->entityType);
+    } catch (InvalidPluginDefinitionException | PluginNotFoundException $e) {
+    }
   }
 
   public function findEntities(): array
   {
-    return \Drupal::entityQuery($this->entityType)
+    return Drupal::entityQuery($this->entityType)
       ->execute();
   }
 
@@ -23,13 +32,12 @@ final class CleanUp
     return $this->storage->loadMultiple($fids);
   }
 
-  public function removeEntities()
-  {
+  public function removeEntities(): void {
     $entities = $this->load();
 
     try {
       $this->storage->delete($entities);
-    } catch (\Drupal\Core\Entity\EntityStorageException $e) {
+    } catch (EntityStorageException $e) {
       print 'Unable to delete ' . count($entities) . PHP_EOL;
     }
     print 'Deleted ' . count($entities) . ' of type ' . $this->entityType . PHP_EOL;
@@ -41,9 +49,8 @@ final class Utils
 {
   private function __construct() {}
 
-  static function summarise()
-  {
-    foreach (\Drupal::entityTypeManager()->getDefinitions() as $entityType) {
+  public static function summarise(): void {
+    foreach (Drupal::entityTypeManager()->getDefinitions() as $entityType) {
       $entityTypeToClean = new CleanUp($entityType->id());
       print count($entityTypeToClean->findEntities()) . "\t" . $entityType->id() . PHP_EOL;
     }
@@ -55,4 +62,4 @@ Utils::summarise();
 $entityType = 'file';
 $entityTypeToClean = new CleanUp($entityType);
 print 'Found ' . count($entityTypeToClean->findEntities()) .  ' ' . $entityType . '(s)' . PHP_EOL;
-//Danger zone! $entityTypeToClean->removeEntities();
+//$entityTypeToClean->removeEntities();
