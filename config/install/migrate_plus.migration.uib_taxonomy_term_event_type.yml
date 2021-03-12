@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: uib_taxonomy_term_tag
+id: uib_taxonomy_term_event_type
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
@@ -9,10 +9,10 @@ migration_tags:
   - 'Drupal 7'
   - Content
 migration_group: uib_taxonomy
-label: 'Taxonomy terms (Tags)'
+label: 'Taxonomy terms (Event type)'
 source:
   plugin: d7_taxonomy_term
-  bundle: vocabulary_1
+  bundle: vocabulary_2
 process:
   tid:
     -
@@ -77,7 +77,7 @@ process:
       source: language
 destination:
   plugin: 'entity:taxonomy_term'
-  default_bundle: vocabulary_1
+  default_bundle: vocabulary_2
 migration_dependencies:
   required:
     - uib_taxonomy_vocabulary
