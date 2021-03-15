@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: uib_taxonomy_term_creative_work_type
+id: uib_taxonomy_term_gender
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
@@ -9,10 +9,10 @@ migration_tags:
   - 'Drupal 7'
   - Content
 migration_group: uib_taxonomy
-label: 'Taxonomy terms creative work type'
+label: 'Taxonomy terms gender'
 source:
   plugin: d7_taxonomy_term
-  bundle: publication_venue
+  bundle: gender
 process:
   tid:
     -
@@ -55,7 +55,7 @@ process:
         - uib_taxonomy_term_creative_work_type
         - upgrade_d7_taxonomy_term_language
         - upgrade_d7_taxonomy_term_project_type
-        - upgrade_d7_taxonomy_term_gender
+        - uib_taxonomy_term_gender
         - upgrade_d7_taxonomy_term_news_tags
         - upgrade_d7_taxonomy_term_publisher_and_journal_types
   parent:
@@ -77,7 +77,7 @@ process:
       source: language
 destination:
   plugin: 'entity:taxonomy_term'
-  default_bundle: publication_venue
+  default_bundle: gender
 migration_dependencies:
   required:
     - uib_taxonomy_vocabulary
