@@ -22,6 +22,7 @@ process:
         vocabulary_2: event_type
         vocabulary_4: teaching_resource_type
         publication_type: critical_writing_type
+        publication_venue: creative_work_type
       bypass: true
     -
       plugin: make_unique_entity_field
