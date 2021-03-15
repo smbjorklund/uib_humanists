@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: uib_taxonomy_term_teaching_resoruce_type_type
+id: uib_taxonomy_term_teaching_resource_type
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
