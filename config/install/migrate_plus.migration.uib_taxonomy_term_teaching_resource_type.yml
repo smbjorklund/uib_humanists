@@ -51,7 +51,7 @@ process:
         - uib_taxonomy_term_event_type
         - uib_taxonomy_term_teaching_resoruce_type_type
         - upgrade_d7_taxonomy_term_record_status
-        - upgrade_d7_taxonomy_term_publication_type
+        - uib_taxonomy_term_critical_writing_type
         - upgrade_d7_taxonomy_term_publication_venue
         - upgrade_d7_taxonomy_term_language
         - upgrade_d7_taxonomy_term_project_type
@@ -77,7 +77,7 @@ process:
       source: language
 destination:
   plugin: 'entity:taxonomy_term'
-  default_bundle: vocabulary_2
+  default_bundle: vocabulary_4
 migration_dependencies:
   required:
     - uib_taxonomy_vocabulary
