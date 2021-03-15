@@ -49,7 +49,7 @@ process:
       migration:
         - uib_taxonomy_term_tag
         - uib_taxonomy_term_event_type
-        - upgrade_d7_taxonomy_term_vocabulary_4
+        - uib_taxonomy_term_teaching_resoruce_type_type
         - upgrade_d7_taxonomy_term_record_status
         - upgrade_d7_taxonomy_term_publication_type
         - upgrade_d7_taxonomy_term_publication_venue

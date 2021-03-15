@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: uib_taxonomy_term_event_type
+id: uib_taxonomy_term_teaching_resoruce_type_type
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
@@ -9,10 +9,10 @@ migration_tags:
   - 'Drupal 7'
   - Content
 migration_group: uib_taxonomy
-label: 'Taxonomy terms (Event type)'
+label: 'Taxonomy terms teaching resource type'
 source:
   plugin: d7_taxonomy_term
-  bundle: vocabulary_2
+  bundle: vocabulary_4
 process:
   tid:
     -
