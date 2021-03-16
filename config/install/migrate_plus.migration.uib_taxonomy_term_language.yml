@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: uib_taxonomy_term_gender
+id: uib_taxonomy_term_language
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
@@ -9,10 +9,10 @@ migration_tags:
   - 'Drupal 7'
   - Content
 migration_group: uib_taxonomy
-label: 'Taxonomy terms gender'
+label: 'Taxonomy terms language'
 source:
   plugin: d7_taxonomy_term
-  bundle: gender
+  bundle: language
 process:
   tid:
     -
@@ -77,7 +77,7 @@ process:
       source: language
 destination:
   plugin: 'entity:taxonomy_term'
-  default_bundle: gender
+  default_bundle: language
 migration_dependencies:
   required:
     - uib_taxonomy_vocabulary

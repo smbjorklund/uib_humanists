@@ -53,7 +53,7 @@ process:
         - upgrade_d7_taxonomy_term_record_status
         - uib_taxonomy_term_critical_writing_type
         - uib_taxonomy_term_creative_work_type
-        - upgrade_d7_taxonomy_term_language
+        - uib_taxonomy_term_language
         - upgrade_d7_taxonomy_term_project_type
         - uib_taxonomy_term_gender
         - upgrade_d7_taxonomy_term_news_tags
