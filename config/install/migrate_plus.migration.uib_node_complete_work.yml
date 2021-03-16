@@ -1,0 +1,305 @@
+langcode: en
+status: true
+dependencies: {  }
+id: uib_node_complete_work
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: uib_nodes
+label: 'Node complete (Creative Work)'
+source:
+  plugin: d7_node_complete
+  node_type: work
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_work/0/status:
+    -
+      plugin: get
+      source: comment
+  taxonomy_vocabulary_1:
+    -
+      plugin: sub_process
+      source: taxonomy_vocabulary_1
+      process:
+        target_id: tid
+  field_contributors:
+    -
+      plugin: get
+      source: field_contributors
+    -
+      plugin: media_wysiwyg_filter
+    -
+      plugin: media_wysiwyg_filter
+  field_url:
+    -
+      plugin: field_link
+      source: field_url
+  field_license:
+    -
+      plugin: get
+      source: field_license
+  field_archiveurl:
+    -
+      plugin: field_link
+      source: field_archiveurl
+  field_abstract_lang:
+    -
+      plugin: get
+      source: field_abstract_lang
+    -
+      plugin: media_wysiwyg_filter
+    -
+      plugin: media_wysiwyg_filter
+    -
+      plugin: media_wysiwyg_filter
+  field_pullquote:
+    -
+      plugin: get
+      source: field_pullquote
+    -
+      plugin: media_wysiwyg_filter
+    -
+      plugin: media_wysiwyg_filter
+  field_textfield:
+    -
+      plugin: get
+      source: field_textfield
+    -
+      plugin: media_wysiwyg_filter
+    -
+      plugin: media_wysiwyg_filter
+    -
+      plugin: media_wysiwyg_filter
+    -
+      plugin: media_wysiwyg_filter
+    -
+      plugin: media_wysiwyg_filter
+  field_tech_notes:
+    -
+      plugin: get
+      source: field_tech_notes
+    -
+      plugin: media_wysiwyg_filter
+  field_downloadurl:
+    -
+      plugin: field_link
+      source: field_downloadurl
+  field_files:
+    -
+      plugin: media_migration_delta_sort
+      source: field_files
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+  field_multi_image:
+    -
+      plugin: media_migration_delta_sort
+      source: field_multi_image
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+  field_media_asset:
+    -
+      plugin: media_migration_delta_sort
+      source: field_media_asset
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+  field_editorial_notes:
+    -
+      plugin: get
+      source: field_editorial_notes
+  field_record_status_tax:
+    -
+      plugin: sub_process
+      source: field_record_status_tax
+      process:
+        target_id: tid
+  field_venue_tax:
+    -
+      plugin: sub_process
+      source: field_venue_tax
+      process:
+        target_id: tid
+  field_language_tax:
+    -
+      plugin: sub_process
+      source: field_language_tax
+      process:
+        target_id: tid
+  field_abstract_lang_tax:
+    -
+      plugin: sub_process
+      source: field_abstract_lang_tax
+      process:
+        target_id: tid
+  field_worldcat_link:
+    -
+      plugin: field_link
+      source: field_worldcat_link
+  field_isbn_text:
+    -
+      plugin: get
+      source: field_isbn_text
+  field_electronic_literature_dire:
+    -
+      plugin: field_link
+      source: field_electronic_literature_dire
+  field_i_e_poetry_entry:
+    -
+      plugin: field_link
+      source: field_i_e_poetry_entry
+  field_nt2_entry:
+    -
+      plugin: field_link
+      source: field_nt2_entry
+  field_po_ex_entry:
+    -
+      plugin: field_link
+      source: field_po_ex_entry
+  field_repository:
+    -
+      plugin: field_link
+      source: field_repository
+  field_node_ref:
+    -
+      plugin: get
+      source: field_node_ref
+  field_author_name:
+    -
+      plugin: get
+      source: field_author_name
+  field_contributor:
+    -
+      plugin: get
+      source: field_contributor
+  field_translator:
+    -
+      plugin: get
+      source: field_translator
+  field_node_ref_event:
+    -
+      plugin: get
+      source: field_node_ref_event
+  field_other_lang_ver_link:
+    -
+      plugin: get
+      source: field_other_lang_ver_link
+  field_other_edition_work:
+    -
+      plugin: get
+      source: field_other_edition_work
+  field_part_of_another_work:
+    -
+      plugin: get
+      source: field_part_of_another_work
+  field_in_anthology:
+    -
+      plugin: get
+      source: field_in_anthology
+  field_work_platform_software:
+    -
+      plugin: get
+      source: field_work_platform_software
+  field_work_year:
+    -
+      plugin: sub_process
+      source: field_work_year
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_authoring_software_entry:
+    -
+      plugin: field_link
+      source: field_authoring_software_entry
+  field_doi:
+    -
+      plugin: get
+      source: field_doi
+  field_brown_digital_repository:
+    -
+      plugin: field_link
+      source: field_brown_digital_repository
+  field_series_ref:
+    -
+      plugin: get
+      source: field_series_ref
+  field_record_status_lib:
+    -
+      plugin: get
+      source: field_record_status_lib
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: work
+migration_dependencies:
+  required:
+    - uib_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance
