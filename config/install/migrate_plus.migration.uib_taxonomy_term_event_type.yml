@@ -54,7 +54,7 @@ process:
         - uib_taxonomy_term_critical_writing_type
         - uib_taxonomy_term_creative_work_type
         - uib_taxonomy_term_language
-        - upgrade_d7_taxonomy_term_project_type
+        - uib_taxonomy_term_project_type
         - uib_taxonomy_term_gender
         - uib_taxonomy_term_news_tags
         - upgrade_d7_taxonomy_term_publisher_and_journal_types
