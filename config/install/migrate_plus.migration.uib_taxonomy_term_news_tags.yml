@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: uib_taxonomy_term_language
+id: uib_taxonomy_term_news_tags
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
@@ -9,10 +9,10 @@ migration_tags:
   - 'Drupal 7'
   - Content
 migration_group: uib_taxonomy
-label: 'Taxonomy terms language'
+label: 'Taxonomy terms new tags'
 source:
   plugin: d7_taxonomy_term
-  bundle: language
+  bundle: news_tags
 process:
   tid:
     -
@@ -53,10 +53,10 @@ process:
         - upgrade_d7_taxonomy_term_record_status
         - uib_taxonomy_term_critical_writing_type
         - uib_taxonomy_term_creative_work_type
-        - upgrade_d7_taxonomy_term_language
+        - uib_taxonomy_term_language
         - upgrade_d7_taxonomy_term_project_type
         - uib_taxonomy_term_gender
-        - upgrade_d7_taxonomy_term_news_tags
+        - uib_taxonomy_term_news_tags
         - upgrade_d7_taxonomy_term_publisher_and_journal_types
   parent:
     -
@@ -77,7 +77,7 @@ process:
       source: language
 destination:
   plugin: 'entity:taxonomy_term'
-  default_bundle: language
+  default_bundle: news_tags
 migration_dependencies:
   required:
     - uib_taxonomy_vocabulary

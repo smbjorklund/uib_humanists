@@ -56,7 +56,7 @@ process:
         - upgrade_d7_taxonomy_term_language
         - upgrade_d7_taxonomy_term_project_type
         - uib_taxonomy_term_gender
-        - upgrade_d7_taxonomy_term_news_tags
+        - uib_taxonomy_term_news_tags
         - upgrade_d7_taxonomy_term_publisher_and_journal_types
   parent:
     -
