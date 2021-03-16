@@ -1,7 +1,7 @@
 langcode: en
 status: true
 dependencies: {  }
-id: uib_taxonomy_term_project_type
+id: uib_taxonomy_term_publisher_and_journal_types
 class: Drupal\migrate\Plugin\Migration
 field_plugin_method: null
 cck_plugin_method: null
@@ -12,7 +12,7 @@ migration_group: uib_taxonomy
 label: 'Taxonomy terms project type'
 source:
   plugin: d7_taxonomy_term
-  bundle: project_type
+  bundle: publisher_and_journal_types
 process:
   tid:
     -
@@ -57,7 +57,7 @@ process:
         - uib_taxonomy_term_project_type
         - uib_taxonomy_term_gender
         - uib_taxonomy_term_news_tags
-        - upgrade_d7_taxonomy_term_publisher_and_journal_types
+        - uib_taxonomy_term_publisher_and_journal_types
   parent:
     -
       plugin: default_value
@@ -77,7 +77,7 @@ process:
       source: language
 destination:
   plugin: 'entity:taxonomy_term'
-  default_bundle: project_type
+  default_bundle: publisher_and_journal_types
 migration_dependencies:
   required:
     - uib_taxonomy_vocabulary

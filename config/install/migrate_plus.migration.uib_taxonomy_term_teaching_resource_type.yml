@@ -57,7 +57,7 @@ process:
         - uib_taxonomy_term_project_type
         - uib_taxonomy_term_gender
         - uib_taxonomy_term_news_tags
-        - upgrade_d7_taxonomy_term_publisher_and_journal_types
+        - uib_taxonomy_term_publisher_and_journal_types
   parent:
     -
       plugin: default_value
