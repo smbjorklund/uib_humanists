@@ -50,10 +50,10 @@ process:
         - uib_taxonomy_term_tag
         - uib_taxonomy_term_event_type
         - uib_taxonomy_term_teaching_resoruce_type_type
-        - upgrade_d7_taxonomy_term_record_status
+        - uib_taxonomy_term_record_status
         - uib_taxonomy_term_critical_writing_type
         - uib_taxonomy_term_creative_work_type
-        - upgrade_d7_taxonomy_term_language
+        - uib_taxonomy_term_language
         - uib_taxonomy_term_project_type
         - uib_taxonomy_term_gender
         - uib_taxonomy_term_news_tags

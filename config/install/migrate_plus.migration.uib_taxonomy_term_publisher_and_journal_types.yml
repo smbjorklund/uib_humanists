@@ -9,7 +9,7 @@ migration_tags:
   - 'Drupal 7'
   - Content
 migration_group: uib_taxonomy
-label: 'Taxonomy terms project type'
+label: 'Taxonomy terms publisher and journal type'
 source:
   plugin: d7_taxonomy_term
   bundle: publisher_and_journal_types
@@ -50,7 +50,7 @@ process:
         - uib_taxonomy_term_tag
         - uib_taxonomy_term_event_type
         - uib_taxonomy_term_teaching_resoruce_type_type
-        - upgrade_d7_taxonomy_term_record_status
+        - uib_taxonomy_term_record_status
         - uib_taxonomy_term_critical_writing_type
         - uib_taxonomy_term_creative_work_type
         - uib_taxonomy_term_language
