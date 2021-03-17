@@ -115,30 +115,28 @@ process:
     -
       plugin: get
       source: field_pullquote
+  'field_textfield/0/format':
     -
-      plugin: media_wysiwyg_filter
+      plugin: static_map
+      source: field_textfield
+      map:
+        1: basic_html
+        2: basic_html
+        3: basic_html
+        basic_text_editor: basic_html
+        ds_code: basic_html
+      bypass: true
     -
-      plugin: media_wysiwyg_filter
-  field_textfield:
+      plugin: default_value
+      default_value: basic_html
+  'field_textfield':
     -
       plugin: get
       source: field_textfield
-    -
-      plugin: media_wysiwyg_filter
-    -
-      plugin: media_wysiwyg_filter
-    -
-      plugin: media_wysiwyg_filter
-    -
-      plugin: media_wysiwyg_filter
-    -
-      plugin: media_wysiwyg_filter
   field_tech_notes:
     -
       plugin: get
       source: field_tech_notes
-    -
-      plugin: media_wysiwyg_filter
   field_downloadurl:
     -
       plugin: field_link
