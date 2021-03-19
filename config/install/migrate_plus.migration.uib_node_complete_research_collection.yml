@@ -1,15 +1,14 @@
-uuid: bc4a968c-e36d-40ed-97cf-995875beb675
 langcode: en
 status: true
 dependencies: {  }
-id: upgrade_d7_node_complete_research_collection
+id: uib_node_complete_research_collection
 class: Drupal\node\Plugin\migrate\D7NodeTranslation
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - 'Drupal 7'
   - Content
-migration_group: migrate_drupal_7
+migration_group: uib_nodes
 label: 'Node complete (Research Collection)'
 source:
   plugin: d7_node_complete
@@ -78,10 +77,25 @@ process:
       source: comment
   field_rc_description:
     -
-      plugin: get
+      plugin: sub_process
       source: field_rc_description
+      process:
+        value:
+          plugin: get
+          source: value
+        format:
+          plugin: static_map
+          source: format
+          map:
+            1: basic_html
+            2: basic_html
+            3: basic_html
+            basic_text_editor: basic_html
+            ds_code: basic_html
+            bypass: true
     -
-      plugin: media_wysiwyg_filter
+      plugin: default_value
+      default_value: basic_html_test
   field_media:
     -
       plugin: media_migration_delta_sort
@@ -140,7 +154,7 @@ destination:
   default_bundle: research_collection
 migration_dependencies:
   required:
-    - upgrade_d7_user
+    - uib_user
     - upgrade_d7_node_type
   optional:
     - upgrade_d7_field_instance
