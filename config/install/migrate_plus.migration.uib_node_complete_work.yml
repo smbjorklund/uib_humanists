@@ -13,8 +13,6 @@ label: 'Node complete (Creative Work)'
 source:
   plugin: d7_node_complete
   node_type: work
-  constants:
-    test: 'Test text'
 process:
   nid:
     -
