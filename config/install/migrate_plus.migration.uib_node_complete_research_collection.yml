@@ -1,0 +1,146 @@
+uuid: bc4a968c-e36d-40ed-97cf-995875beb675
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_complete_research_collection
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node complete (Research Collection)'
+source:
+  plugin: d7_node_complete
+  node_type: research_collection
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_research_collection/0/status:
+    -
+      plugin: get
+      source: comment
+  field_rc_description:
+    -
+      plugin: get
+      source: field_rc_description
+    -
+      plugin: media_wysiwyg_filter
+  field_media:
+    -
+      plugin: media_migration_delta_sort
+      source: field_media
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+  field_collection_platform_ref:
+    -
+      plugin: get
+      source: field_collection_platform_ref
+  field_events:
+    -
+      plugin: get
+      source: field_events
+  field_collection_curated_by:
+    -
+      plugin: get
+      source: field_collection_curated_by
+  field_collection_contributors:
+    -
+      plugin: get
+      source: field_collection_contributors
+  field_people:
+    -
+      plugin: get
+      source: field_people
+  field_creative_works:
+    -
+      plugin: get
+      source: field_creative_works
+  field_critical_writing:
+    -
+      plugin: get
+      source: field_critical_writing
+  field_organizations:
+    -
+      plugin: get
+      source: field_organizations
+  field_publishers:
+    -
+      plugin: get
+      source: field_publishers
+  field_teaching_resources:
+    -
+      plugin: get
+      source: field_teaching_resources
+  field_rc_db_archive:
+    -
+      plugin: get
+      source: field_rc_db_archive
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: research_collection
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance
