@@ -1,0 +1,207 @@
+langcode: en
+status: true
+dependencies: {  }
+id: uib_node_complete_person
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - uib
+migration_group: uib_nodes
+label: 'Node complete (Person)'
+source:
+  plugin: d7_node_complete
+  node_type: person
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_person/0/status:
+    -
+      plugin: get
+      source: comment
+  field_url:
+    -
+      plugin: field_link
+      source: field_url
+  field_textfield:
+    -
+      plugin: sub_process
+      source: field_textfield
+      process:
+        value:
+          plugin: get
+          source: value
+        format:
+          plugin: static_map
+          source: format
+          map:
+            1: basic_html
+            2: basic_html
+            3: basic_html
+            basic_text_editor: basic_html
+            ds_code: basic_html
+            bypass: true
+    -
+      plugin: default_value
+      default_value: basic_html_test
+  field_last_name:
+    -
+      plugin: get
+      source: field_last_name
+  field_first_name:
+    -
+      plugin: get
+      source: field_first_name
+  field_residency:
+    -
+      plugin: get
+      source: field_residency
+  field_nationality:
+    -
+      plugin: get
+      source: field_nationality
+  field_middle_name:
+    -
+      plugin: get
+      source: field_middle_name
+  field_auth_email:
+    -
+      plugin: sub_process
+      source: field_auth_email
+      process:
+        value: email
+  field_yeardied:
+    -
+      plugin: sub_process
+      source: field_yeardied
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_yearborn:
+    -
+      plugin: sub_process
+      source: field_yearborn
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_authorphoto:
+    -
+      plugin: media_migration_delta_sort
+      source: field_authorphoto
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+  field_editorial_notes:
+    -
+      plugin: get
+      source: field_editorial_notes
+  field_record_status_tax:
+    -
+      plugin: sub_process
+      source: field_record_status_tax
+      process:
+        target_id: tid
+  field_files:
+    -
+      plugin: media_migration_delta_sort
+      source: field_files
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+  field_alternative_spelling_of_na:
+    -
+      plugin: get
+      source: field_alternative_spelling_of_na
+  field_gender_sel:
+    -
+      plugin: sub_process
+      source: field_gender_sel
+      process:
+        target_id: tid
+  field_affiliation:
+    -
+      plugin: get
+      source: field_affiliation
+  field_userid_reference:
+    -
+      plugin: get
+      source: field_userid_reference
+  field_orcid:
+    -
+      plugin: field_link
+      source: field_orcid
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: person
+migration_dependencies:
+  required:
+    - uib_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance
