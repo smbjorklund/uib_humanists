@@ -1,0 +1,230 @@
+langcode: en
+status: true
+dependencies: {  }
+id: uib_node_complete_event
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - uib
+migration_group: uib_nodes
+label: 'Node complete (Event)'
+source:
+  plugin: d7_node_complete
+  node_type: event
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_event/0/status:
+    -
+      plugin: get
+      source: comment
+  taxonomy_vocabulary_2:
+    -
+      plugin: sub_process
+      source: taxonomy_vocabulary_2
+      process:
+        target_id: tid
+  taxonomy_vocabulary_1:
+    -
+      plugin: sub_process
+      source: taxonomy_vocabulary_1
+      process:
+        target_id: tid
+  field_url:
+    -
+      plugin: field_link
+      source: field_url
+  field_archiveurl:
+    -
+      plugin: field_link
+      source: field_archiveurl
+  field_textfield:
+    -
+      plugin: sub_process
+      source: field_textfield
+      process:
+        value:
+          plugin: get
+          source: value
+        format:
+          plugin: static_map
+          source: format
+          map:
+            1: basic_html
+            2: basic_html
+            3: basic_html
+            basic_text_editor: basic_html
+            ds_code: basic_html
+            bypass: true
+    -
+      plugin: default_value
+      default_value: basic_html
+  field_date:
+    -
+      plugin: sub_process
+      source: field_date
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_location:
+    -
+      plugin: get
+      source: field_location
+  field_email:
+    -
+      plugin: sub_process
+      source: field_email
+      process:
+        value: email
+  field_files:
+    -
+      plugin: media_migration_delta_sort
+      source: field_files
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+  field_media_asset:
+    -
+      plugin: media_migration_delta_sort
+      source: field_media_asset
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+  field_editorial_notes:
+    -
+      plugin: get
+      source: field_editorial_notes
+  field_record_status_tax:
+    -
+      plugin: sub_process
+      source: field_record_status_tax
+      process:
+        target_id: tid
+  field_multi_images:
+    -
+      plugin: media_migration_delta_sort
+      source: field_multi_images
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+  field_node_ref:
+    -
+      plugin: get
+      source: field_node_ref
+  field_individual_organizers:
+    -
+      plugin: get
+      source: field_individual_organizers
+  field_curator:
+    -
+      plugin: get
+      source: field_curator
+  field_associated_event:
+    -
+      plugin: get
+      source: field_associated_event
+  field_event_series:
+    -
+      plugin: get
+      source: field_event_series
+  field_event_abstract_lang:
+    -
+      plugin: sub_process
+      source: field_event_abstract_lang
+      process:
+        value:
+          plugin: get
+          source: value
+        format:
+          plugin: static_map
+          source: format
+          map:
+            1: basic_html
+            2: basic_html
+            3: basic_html
+            basic_text_editor: basic_html
+            ds_code: basic_html
+            bypass: true
+    -
+      plugin: default_value
+      default_value: basic_html
+  field_event_abstract_lang_tax:
+    -
+      plugin: sub_process
+      source: field_event_abstract_lang_tax
+      process:
+        target_id: tid
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: event
+migration_dependencies:
+  required:
+    - uib_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance
