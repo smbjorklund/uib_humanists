@@ -8,6 +8,7 @@ cck_plugin_method: null
 migration_tags:
   - 'Drupal 7'
   - Configuration
+  - uib
 migration_group: uib_nodes
 label: 'Node type configuration'
 source:
