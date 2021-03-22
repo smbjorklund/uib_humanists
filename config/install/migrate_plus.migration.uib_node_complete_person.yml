@@ -100,7 +100,7 @@ process:
             bypass: true
     -
       plugin: default_value
-      default_value: basic_html_test
+      default_value: basic_html
   field_last_name:
     -
       plugin: get
