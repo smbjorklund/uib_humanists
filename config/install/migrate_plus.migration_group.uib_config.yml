@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - uib_humanists
+  enforced:
+    module:
+      - uib_humanists
+id: uib_config
+label: 'UiB config'
+description: 'UiB humanists config migration from Drupal 7'
+source_type: 'Drupal 7'
+module: null
+shared_configuration:
+  source:
+    key: migrate

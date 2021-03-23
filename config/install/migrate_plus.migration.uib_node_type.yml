@@ -9,7 +9,7 @@ migration_tags:
   - 'Drupal 7'
   - Configuration
   - uib
-migration_group: uib_nodes
+migration_group: uib_config
 label: 'Node type configuration'
 source:
   plugin: d7_node_type
