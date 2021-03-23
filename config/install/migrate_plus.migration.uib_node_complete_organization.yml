@@ -104,7 +104,7 @@ process:
   field_location:
     -
       plugin: get
-      source: field_location
+      source: field_address
   field_email:
     -
       plugin: sub_process
