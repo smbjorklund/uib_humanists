@@ -1,0 +1,339 @@
+langcode: en
+status: true
+dependencies: {  }
+id: uib_node_complete_critical_writing
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - uib
+migration_group: uib_nodes
+label: 'Node complete (Critical Writing)'
+source:
+  plugin: d7_node_complete
+  node_type: critical_writing
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_critical_writing/0/status:
+    -
+      plugin: get
+      source: comment
+  taxonomy_vocabulary_1:
+    -
+      plugin: sub_process
+      source: taxonomy_vocabulary_1
+      process:
+        target_id: tid
+  field_url:
+    -
+      plugin: field_link
+      source: field_url
+  field_license:
+    -
+      plugin: get
+      source: field_license
+  field_abstract:
+    -
+      plugin: sub_process
+      source: field_abstract_lang
+      process:
+        value:
+          plugin: get
+          source: value
+        format:
+          plugin: static_map
+          source: format
+          map:
+            1: basic_html
+            2: basic_html
+            3: basic_html
+            basic_text_editor: basic_html
+            ds_code: basic_html
+          default_value: basic_html
+  field_eissn:
+    -
+      plugin: get
+      source: field_eissn
+  field_archiveurl:
+    -
+      plugin: field_link
+      source: field_archiveurl
+  field_journalissue:
+    -
+      plugin: get
+      source: field_journalissue
+  field_pagenumbers:
+    -
+      plugin: get
+      source: field_pagenumbers
+  field_issn_text:
+    -
+      plugin: get
+      source: field_issn_text
+  field_isbn_text:
+    -
+      plugin: get
+      source: field_isbn_text
+  field_abstract_lang:
+    -
+      plugin: sub_process
+      source: field_abstract_lang
+      process:
+        value:
+          plugin: get
+          source: value
+        format:
+          plugin: static_map
+          source: format
+          map:
+            1: basic_html
+            2: basic_html
+            3: basic_html
+            basic_text_editor: basic_html
+            ds_code: basic_html
+          default_value: basic_html
+  field_edition:
+    -
+      plugin: get
+      source: field_edition
+  field_pullquote:
+    -
+      plugin: sub_process
+      source: field_pullquote
+      process:
+        value:
+          plugin: get
+          source: value
+        format:
+          plugin: static_map
+          source: format
+          map:
+            1: basic_html
+            2: basic_html
+            3: basic_html
+            basic_text_editor: basic_html
+            ds_code: basic_html
+            'NULL': basic_html
+          default_value: basic_html
+  field_files:
+    -
+      plugin: media_migration_delta_sort
+      source: field_files
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+  field_multi_images:
+    -
+      plugin: media_migration_delta_sort
+      source: field_multi_images
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+  field_media_asset:
+    -
+      plugin: media_migration_delta_sort
+      source: field_media_asset
+    -
+      plugin: sub_process
+      process:
+        target_id: fid
+  field_editorial_notes:
+    -
+      plugin: get
+      source: field_editorial_notes
+  field_record_status_tax:
+    -
+      plugin: sub_process
+      source: field_record_status_tax
+      process:
+        target_id: tid
+  field_pubtype_tax:
+    -
+      plugin: sub_process
+      source: field_pubtype_tax
+      process:
+        target_id: tid
+  field_language_tax:
+    -
+      plugin: sub_process
+      source: field_language_tax
+      process:
+        target_id: tid
+  field_abstract_lang_tax:
+    -
+      plugin: sub_process
+      source: field_abstract_lang_tax
+      process:
+        target_id: tid
+  field_worldcat_link:
+    -
+      plugin: field_link
+      source: field_worldcat_link
+  field_electronic_literature_dire:
+    -
+      plugin: field_link
+      source: field_electronic_literature_dire
+  field_po_ex_entry:
+    -
+      plugin: field_link
+      source: field_po_ex_entry
+  field_node_ref:
+    -
+      plugin: get
+      source: field_node_ref
+  field_author_name:
+    -
+      plugin: get
+      source: field_author_name
+  field_translator:
+    -
+      plugin: get
+      source: field_translator
+  field_node_ref_event:
+    -
+      plugin: get
+      source: field_node_ref_event
+  field_other_lang_ver_link:
+    -
+      plugin: get
+      source: field_other_lang_ver_link
+  field_criticalw_platform_ref:
+    -
+      plugin: get
+      source: field_criticalw_platform_ref
+  field_cw_in_platform_software:
+    -
+      plugin: get
+      source: field_cw_in_platform_software
+  field_editor_name:
+    -
+      plugin: get
+      source: field_editor_name
+  field_university:
+    -
+      plugin: get
+      source: field_university
+  field_other_edition_link:
+    -
+      plugin: get
+      source: field_other_edition_link
+  field_series_ref:
+    -
+      plugin: get
+      source: field_series_ref
+  field_inbook:
+    -
+      plugin: get
+      source: field_inbook
+  field_node_ref_work:
+    -
+      plugin: get
+      source: field_node_ref_work
+  field_tr_critical:
+    -
+      plugin: get
+      source: field_tr_critical
+  field_ref_about_event:
+    -
+      plugin: get
+      source: field_ref_about_event
+  field_organization_cw:
+    -
+      plugin: get
+      source: field_organization_cw
+  field_publisher_referenced:
+    -
+      plugin: get
+      source: field_publisher_referenced
+  field_database_or_archive_refere:
+    -
+      plugin: get
+      source: field_database_or_archive_refere
+  field_critical_writing_year:
+    -
+      plugin: sub_process
+      source: field_critical_writing_year
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_doi:
+    -
+      plugin: get
+      source: field_doi
+  field_record_status_lib:
+    -
+      plugin: get
+      source: field_record_status_lib
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: critical_writing
+migration_dependencies:
+  required:
+    - uib_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance
