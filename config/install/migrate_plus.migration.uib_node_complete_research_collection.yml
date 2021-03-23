@@ -93,10 +93,7 @@ process:
             3: basic_html
             basic_text_editor: basic_html
             ds_code: basic_html
-            bypass: true
-    -
-      plugin: default_value
-      default_value: basic_html
+          default_value: basic_html
   field_media:
     -
       plugin: media_migration_delta_sort

@@ -113,10 +113,7 @@ process:
             3: basic_html
             basic_text_editor: basic_html
             ds_code: basic_html
-            bypass: true
-    -
-      plugin: default_value
-      default_value: basic_html
+          default_value: basic_html
   field_date:
     -
       plugin: sub_process
@@ -208,10 +205,7 @@ process:
             3: basic_html
             basic_text_editor: basic_html
             ds_code: basic_html
-            bypass: true
-    -
-      plugin: default_value
-      default_value: basic_html
+          default_value: basic_html
   field_event_abstract_lang_tax:
     -
       plugin: sub_process
