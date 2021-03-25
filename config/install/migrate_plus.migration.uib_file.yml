@@ -15,7 +15,7 @@ source:
   plugin: d7_file
   scheme: public
   constants:
-    source_base_path: /Users/steinmb/sites/elmcip.net/drupal/sites/default/files/
+    source_base_path: /Users/steinmb/sites/elmcip.net/drupal
 process:
   fid:
     -
