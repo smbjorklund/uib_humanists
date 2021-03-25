@@ -116,10 +116,15 @@ process:
       source: field_year_initiated
       process:
         value:
-          plugin: format_date
-          from_format: 'Y-m-d\TH:i:s'
-          to_format: Y-m-d
-          source: value
+          -
+            plugin: substr
+            start: 0
+            length: 10
+            source: value
+          -
+            plugin: format_date
+            from_format: 'Y-m-d'
+            to_format: Y-m-d
   field_db_language:
     -
       plugin: sub_process
