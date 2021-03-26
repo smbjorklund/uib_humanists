@@ -1,0 +1,80 @@
+langcode: en
+status: true
+dependencies: {  }
+id: uib_file_entity_audio_public
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Media Migration'
+  - 'Media Entity'
+  - uib
+migration_group: uib_files
+label: 'File Entity migration (Audio)'
+source:
+  plugin: d7_file_entity_item
+  type: audio
+  scheme: public
+  destination_media_type_id: audio
+process:
+  uuid:
+    -
+      plugin: media_migrate_uuid
+      source: fid
+    -
+      plugin: skip_on_empty
+      method: process
+  mid:
+    -
+      plugin: get
+      source: fid
+  uid:
+    -
+      plugin: get
+      source: uid
+  bundle:
+    -
+      plugin: get
+      source: bundle
+  name:
+    -
+      plugin: get
+      source: filename
+  created:
+    -
+      plugin: get
+      source: timestamp
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  status:
+    -
+      plugin: get
+      source: status
+  field_description:
+    -
+      plugin: get
+      source: field_description
+  field_media_audio_file/target_id:
+    -
+      plugin: get
+      source: fid
+  field_media_audio_file/display:
+    -
+      plugin: get
+      source: display
+  field_media_audio_file/description:
+    -
+      plugin: get
+      source: description
+destination:
+  plugin: 'entity:media'
+migration_dependencies:
+  required:
+    - uib_user
+    - uib_file
+  optional: {  }
+
