@@ -237,6 +237,10 @@ process:
     -
       plugin: field_link
       source: field_po_ex_entry
+  field_the_next:
+    -
+      plugin: field_link
+      source: field_the_next
   field_node_ref:
     -
       plugin: get
