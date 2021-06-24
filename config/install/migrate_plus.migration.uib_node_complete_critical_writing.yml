@@ -93,7 +93,7 @@ process:
   field_abstract:
     -
       plugin: sub_process
-      source: field_abstract_lang
+      source: field_abstract
       process:
         value:
           plugin: get
