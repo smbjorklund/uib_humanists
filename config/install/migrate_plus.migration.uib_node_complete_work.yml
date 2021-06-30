@@ -84,8 +84,22 @@ process:
         target_id: tid
   field_contributors:
     -
-      plugin: get
+      plugin: sub_process
       source: field_contributors
+      process:
+        value:
+          plugin: get
+          source: value
+        format:
+          plugin: static_map
+          source: format
+          map:
+            1: basic_html
+            2: basic_html
+            3: basic_html
+            basic_text_editor: basic_html
+            ds_code: basic_html
+          default_value: basic_html
   field_url:
     -
       plugin: field_link
@@ -154,8 +168,22 @@ process:
           default_value: basic_html
   field_tech_notes:
     -
-      plugin: get
+      plugin: sub_process
       source: field_tech_notes
+      process:
+        value:
+          plugin: get
+          source: value
+        format:
+          plugin: static_map
+          source: format
+          map:
+            1: basic_html
+            2: basic_html
+            3: basic_html
+            basic_text_editor: basic_html
+            ds_code: basic_html
+          default_value: basic_html
   field_downloadurl:
     -
       plugin: field_link
