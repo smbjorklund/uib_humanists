@@ -82,16 +82,40 @@ process:
       source: field_url
   field_ps_description:
     -
-      plugin: get
+      plugin: sub_process
       source: field_ps_description
-    -
-      plugin: media_wysiwyg_filter
+      process:
+        value:
+          plugin: get
+          source: value
+        format:
+          plugin: static_map
+          source: format
+          map:
+            1: basic_html
+            2: basic_html
+            3: basic_html
+            basic_text_editor: basic_html
+            ds_code: basic_html
+          default_value: basic_html
   field_version_history:
     -
-      plugin: get
+      plugin: sub_process
       source: field_version_history
-    -
-      plugin: media_wysiwyg_filter
+      process:
+        value:
+          plugin: get
+          source: value
+        format:
+          plugin: static_map
+          source: format
+          map:
+            1: basic_html
+            2: basic_html
+            3: basic_html
+            basic_text_editor: basic_html
+            ds_code: basic_html
+          default_value: basic_html
   field_license:
     -
       plugin: get
