@@ -108,11 +108,11 @@ process:
       source: field_first_name
   field_residency:
     -
-      plugin: get
+      plugin: location_to_address
       source: field_residency
   field_nationality:
     -
-      plugin: get
+      plugin: location_to_country
       source: field_nationality
   field_middle_name:
     -
