@@ -91,7 +91,7 @@ process:
   field_textfield:
     -
       plugin: sub_process
-      source: body
+      source: field_textfield
       process:
         value:
           plugin: get
