@@ -155,7 +155,7 @@ process:
             basic_text_editor: basic_html
             ds_code: basic_html
           default_value: basic_html
-  field_db_description_original:
+    field_db_description_original:
     -
       plugin: sub_process
       source: field_db_description_original
