@@ -5,6 +5,6 @@
     "homepage": "https://github.org/smbjorklund/uib_humanists",
     "license": "GPL-2.0+",
     "require": {
-        "drupal/core": "^8.7.7 || ^9"
+        "php": ">8.0"
     }
 }
