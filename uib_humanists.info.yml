@@ -2,7 +2,7 @@ type: module
 name: Migrate Humanities
 description: 'UiB humanities migrations'
 package: UiB
-core_version_requirement: ^8 || ^9
+core_version_requirement: '>=9.1'
 
 dependencies:
-  - drupal:migrate (>=8.3)
+  - drupal:migrate
